@@ -16,7 +16,7 @@ class Vehicle {
 
         return this.doesV5cIDExist(userId, v5cID)
         .then(function() {
-            return Util.invokeChaincode(securityContext, 'create_vehicle', [ v5cID ])
+            return Util.invokeChaincode(securityContext, 'create_container', [ v5cID ])
             .then(function() {
                 return v5cID;
             });
