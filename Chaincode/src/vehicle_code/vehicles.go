@@ -181,7 +181,7 @@ func (t *SimpleChaincode) create_container(stub shim.ChaincodeStubInterface, cal
 	var v Container
 
 	v5c_ID         := "\"v5cID\":\""+v5cID+"\", "
-	id             := "\"Id\":UNDEFINED, "
+	id             := "\"Id\": \"UNDEFINED\", "
 	owner          := "\"Owner\":\""+caller+"\", "
 	status         := "\"Status\":0, "
   weight         := "\"Weight\":0, "
