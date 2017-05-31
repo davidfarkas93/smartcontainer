@@ -188,28 +188,31 @@ func (t *SimpleChaincode) create_container(stub shim.ChaincodeStubInterface, cal
   temperature    := "\"Temperature\":0, "
 
 	container_json := "{"+v5c_ID+id+owner+status+weight+temperature+"}" 	// Concatenates the variables to create the total JSON object
-
+	logger.Debug("call create_container: ", container_json)
 	matched, err := regexp.Match("^[A-z][A-z][0-9]{7}", []byte(v5cID))  				// matched = true if the v5cID passed fits format of two letters followed by seven digits
 
 	if err != nil { fmt.Printf("CREATE_VEHICLE: Invalid v5cID: %s", err); return nil, errors.New("Invalid v5cID") }
+	logger.Debug("valid v5c")
 
 	if 	v5c_ID  == "" 	 || matched == false    {
 			fmt.Printf("CREATE_VEHICLE: Invalid v5cID provided");
+			logger.Debug("CREATE_VEHICLE: Invalid v5cID provided")
 			return nil, errors.New("Invalid v5cID provided")
 	}
 
 	err = json.Unmarshal([]byte(container_json), &v)							// Convert the JSON defined above into a vehicle object for go
 
 	if err != nil { return nil, errors.New("Invalid JSON object") }
-
+	logger.Debug("json")
 	record, err := stub.GetState(v.V5cID) 								// If not an error then a record exists so cant create a new car with this V5cID as it must be unique
 
   if record != nil { return nil, errors.New("Container already exists") }
-
+	logger.Debug("exists")
 	if 	caller_affiliation != SENDER {							// Only the regulator can create a new v5
+		logger.Debug("permission denied")
 		return nil, errors.New(fmt.Sprintf("Permission Denied. create_vehicle. %v === %v", caller_affiliation, SENDER))
 	}
-
+	logger.Debug("save")
 	_, err  = t.save_changes(stub, v)
 
 	if err != nil { fmt.Printf("CREATE_CONTAINER: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }

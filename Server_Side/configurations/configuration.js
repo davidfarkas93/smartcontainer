@@ -50,7 +50,7 @@ config.users = [
     {
         enrollmentID: 'DVLA',
         attributes: [
-            {name: 'role', value: 'regulator'},
+            {name: 'role', value: 'sender'},
             {name: 'username', value: 'DVLA'}
         ],
         registrar: {},
