@@ -145,12 +145,13 @@ func (t *SimpleChaincode) save_changes(stub shim.ChaincodeStubInterface, v Conta
 }
 
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
-	fmt.Printf("INVOKE: %s", function)
+	logger.Debug("function: ", function)
 	caller, caller_affiliation, err := t.get_caller_data(stub)
 
 	if err != nil { return nil, errors.New("Error retrieving caller information")}
 
 	if function == "create_container" {
+				logger.Debug("call create_container: ")
         return t.create_container(stub, caller, caller_affiliation, args[0])
 	} else if function == "ping" {
         return t.ping(stub)
