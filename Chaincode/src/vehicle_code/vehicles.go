@@ -110,7 +110,7 @@ func (t *SimpleChaincode) get_caller_data(stub shim.ChaincodeStubInterface) (str
 
 	affiliation, err := t.check_affiliation(stub);
 
-    if err != nil { return "", "", err }
+  if err != nil { return "", "", err }
 
 	return user, affiliation, nil
 }
@@ -145,7 +145,7 @@ func (t *SimpleChaincode) save_changes(stub shim.ChaincodeStubInterface, v Conta
 }
 
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
-
+	fmt.Printf("INVOKE: %s", function)
 	caller, caller_affiliation, err := t.get_caller_data(stub)
 
 	if err != nil { return nil, errors.New("Error retrieving caller information")}
