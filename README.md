@@ -1,14 +1,12 @@
-Car Lease Demo
+Smartcontainer Demo
 =======
 
-##Deploying the demo##
+## Deploying the demo
 To deploy to Bluemix simply use the button below then follow the instructions. This will generate the NodeJS server and the Blockchain service for you.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Blockchain/car-lease-demo.git)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/farkasdav93/smartcontainer.git)
 
-To deploy the demo locally follow the instructions [here](Documentation/Installation%20Guide.md#deploying-locally)
-
-##Application overview##
+## Application overview
 This application is designed to demonstrate how assets can be modeled on the Blockchain using a car leasing scenario. In the scenario vehicles are modeled using Blockchain technology with the following attributes:
 
 | Attribute       | Type                                                                                                  |

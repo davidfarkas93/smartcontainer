@@ -22,7 +22,7 @@ function get_all_cars(req, res, next, usersToSecurityContext)
     user_id = req.session.identity;
     securityContext = usersToSecurityContext[user_id];
 
-    return Util.queryChaincode(securityContext, 'get_vehicles', [])
+    return Util.queryChaincode(securityContext, 'get_containers', [])
     .then(function(data) {
         let cars = JSON.parse(data.toString());
         console.log(cars);
