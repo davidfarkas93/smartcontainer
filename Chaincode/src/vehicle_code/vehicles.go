@@ -185,7 +185,7 @@ func (t *SimpleChaincode) create_container(stub shim.ChaincodeStubInterface, cal
 	owner          := "\"Owner\":\""+caller+"\", "
 	status         := "\"Status\":0, "
   weight         := "\"Weight\":0, "
-  temperature    := "\"Temperature\":0, "
+  temperature    := "\"Temperature\":0"
 
 	container_json := "{"+v5c_ID+id+owner+status+weight+temperature+"}" 	// Concatenates the variables to create the total JSON object
 	logger.Debug("call create_container: ", container_json)
